@@ -5,6 +5,7 @@ Construído com: Java 17, Spring Boot, Thymeleaf, Maven, Lombok, JPA, Hibernate,
 ## Classes 
 
 ### Servico.java
+- representação da tabela `servico` no banco de dados
 - classe `POJO` tradicional
 - sem lógica de negócio, apenas argumentos
 - informar que é uma tabela de dados `@Entity`
