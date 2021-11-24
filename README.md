@@ -18,7 +18,9 @@ Construído com: Java 17, Spring Boot, Thymeleaf, Maven, Lombok, JPA, Hibernate,
 
 ## Controllers
 - métodos crud
-- recebe o `repository` como injeção de dependência
+- deve ficar com a responsabilidade apenas de web -> requisição e resposta
+- controla qual view vai ser renderizada e quais dados vão ser renderizados por aquela view
+- qualquer outra coisa de responsabilidade deve ser extraída para outra camada (exemplo `service`)
 
 ## DTOs
 - irá presentar os dados que vão ser trafegados na aplicação
@@ -29,6 +31,10 @@ Construído com: Java 17, Spring Boot, Thymeleaf, Maven, Lombok, JPA, Hibernate,
 - responsável por fazer a conversão entre a camada de `DTO` e a camada de `entidade` (e vice-versa)
 - `bean spring` -> classe gerenciada pelo Spring, possibilitando acessar ela através de injeção de dependência
 - usar o `@Component`
+
+## Service
+- é um `bean spring` @Service
+- fazer a comunicação com o `repository` e com o `mapper`
 
 ## Interfaces
 
