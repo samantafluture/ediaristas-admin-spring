@@ -20,12 +20,26 @@
                                     <div class="form-group">
                                         <label for="nome">Nome</label>
                                         <input type="text" class="form-control" th:field="*{nome}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('nome')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="valorMinimo">Valor Mínimo</label>
                                         <input type="number" class="form-control" th:field="*{valorMinimo}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('valorMinimo')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -35,12 +49,26 @@
                                     <div class="form-group">
                                         <label for="qtdHoras">Quantidade Horas</label>
                                         <input type="number" class="form-control" th:field="*{qtdHoras}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('qtdHoras')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="porcentagemComissao">Porcentagem Comissão</label>
                                         <input type="number" class="form-control" th:field="*{porcentagemComissao}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('porcentagemComissao')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -50,12 +78,26 @@
                                     <div class="form-group">
                                         <label for="horasQuarto">Horas Quarto</label>
                                         <input type="number" class="form-control" th:field="*{horasQuarto}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('horasQuarto')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="valorQuarto">Valor Quarto</label>
                                         <input type="number" class="form-control" th:field="*{valorQuarto}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('valorQuarto')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -65,12 +107,26 @@
                                     <div class="form-group">
                                         <label for="horasSalar">Horas Sala</label>
                                         <input type="number" class="form-control" th:field="*{horasSala}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('horasSala')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="valorSala">Valor Sala</label>
                                         <input type="number" class="form-control" th:field="*{valorSala}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('valorSala')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -80,12 +136,26 @@
                                     <div class="form-group">
                                         <label for="horasBanheiro">Horas Banheiro</label>
                                         <input type="number" class="form-control" th:field="*{horasBanheiro}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('horasBanheiro')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="valorBanheiro">Valor Banheiro</label>
                                         <input type="number" class="form-control" th:field="*{valorBanheiro}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('valorBanheiro')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -95,12 +165,26 @@
                                     <div class="form-group">
                                         <label for="horasCozinha">Horas Cozinha</label>
                                         <input type="number" class="form-control" th:field="*{horasCozinha}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('horasCozinha')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="valorCozinha">Valor Cozinha</label>
                                         <input type="number" class="form-control" th:field="*{valorCozinha}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('valorCozinha')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -110,12 +194,26 @@
                                     <div class="form-group">
                                         <label for="horasQuintal">Horas Quintal</label>
                                         <input type="number" class="form-control" th:field="*{horasQuintal}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('horasQuintal')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="valorQuintal">Valor Quintal</label>
                                         <input type="number" class="form-control" th:field="*{valorQuintal}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('valorQuintal')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -125,12 +223,26 @@
                                     <div class="form-group">
                                         <label for="horasOutros">Horas Outros</label>
                                         <input type="number" class="form-control" th:field="*{horasOutros}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('horasOutros')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="valorOutros">Valor Outros</label>
                                         <input type="number" class="form-control" th:field="*{valorOutros}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('valorOutros')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -142,12 +254,26 @@
                                         <select class="form-control" th:field="*{icone}">
                                             <option th:each="icone : ${icones}" th:text="${icone.nome}" th:value="${icone}"></option>
                                         </select>
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('icone')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="posicao">Posição</label>
                                         <input type="number" class="form-control" th:field="*{posicao}">
+                                        <ul>
+                                            <li 
+                                                class="text-danger"
+                                                th:each="erro : ${#fields.errors('posicao')}"
+                                                th:text="${erro}"
+                                            ></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
