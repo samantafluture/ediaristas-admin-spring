@@ -1,6 +1,6 @@
 # Dashboard Administrativo do e-diaristas
 
-Dashboard com funções simples CRUD e login/cadastro, para gerenciar a parte administrativa de uma aplicação web.
+Dashboard com funções CRUD e de autenticação para cadastro e login de usuários. Sistema tem como objetivo gerenciar a parte administrativa de uma aplicação web.
 
 ## Dependências do Projeto
 
