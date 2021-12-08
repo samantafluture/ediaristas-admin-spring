@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.FieldError;
 
 import br.com.treinaweb.ediaristas.core.enums.TipoUsuario;
+import br.com.treinaweb.ediaristas.core.exceptions.SenhasNaoConferemException;
+import br.com.treinaweb.ediaristas.core.exceptions.UsuarioJaCadastradoException;
 import br.com.treinaweb.ediaristas.core.exceptions.UsuarioNaoEncontradoException;
 import br.com.treinaweb.ediaristas.core.models.Usuario;
 import br.com.treinaweb.ediaristas.core.repositories.UsuarioRepository;
@@ -27,10 +30,21 @@ public class WebServiceUsuario {
     }
 
     public Usuario cadastrar(UsuarioCadastroForm form) {
-        var model = mapper.toModel(form);
+        var senha = form.getSenha();
+        var confirmacaoSenha = form.getConfirmacaoSenha();
 
-        // all users created by default are admin users
-        model.setTipoUsuario(TipoUsuario.ADMIN);
+        if (!senha.equals(confirmacaoSenha)) {
+            var mensagem = "Os dois campos de senha não conferem";
+            var fieldError = new FieldError(form.getClass().getName(), "confirmacaoSenha", form.getConfirmacaoSenha(),
+                    false, null, null, mensagem);
+
+            throw new SenhasNaoConferemException(mensagem, fieldError);
+        }
+
+        var model = mapper.toModel(form);
+        model.setTipoUsuario(TipoUsuario.ADMIN); // all users created by default are admin users
+
+        validarCamposUnicos(model);
 
         return repository.save(model);
     }
@@ -57,6 +71,8 @@ public class WebServiceUsuario {
         model.setSenha(usuario.getSenha());
         model.setTipoUsuario(usuario.getTipoUsuario());
 
+        validarCamposUnicos(model);
+
         return repository.save(model);
     }
 
@@ -64,6 +80,26 @@ public class WebServiceUsuario {
         var usuario = buscarPorId(id);
 
         repository.delete(usuario);
+    }
+
+    private void validarCamposUnicos(Usuario usuario) {
+        // repository.findByEmail(usuario.getEmail()).ifPresent(usuarioEncontrado -> {
+        //     if (!usuarioEncontrado.equals(usuario)) {
+        //         var mensagem = "Já existe um usuário cadastrado com esse email";
+        //         var fieldError = new FieldError(usuario.getClass().getName(), "email", usuario.getEmail(), false, null,
+        //                 null,
+        //                 mensagem);
+
+        //         throw new UsuarioJaCadastradoException(mensagem, fieldError);
+        //     }
+        // });
+
+        if (repository.isEmailJaCadastrado(usuario.getEmail(), usuario.getId())) {
+            var mensagem = "Já existe um usuário cadastrado com esse email";
+            var fieldError = new FieldError(usuario.getClass().getName(), "email", usuario.getEmail(), false, null, null, mensagem);
+
+            throw new UsuarioJaCadastradoException(mensagem, fieldError);
+        }
     }
 
 }
