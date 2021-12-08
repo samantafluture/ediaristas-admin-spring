@@ -14,6 +14,7 @@ Dashboard com funções CRUD e de autenticação para cadastro e login de usuár
 
 - Spring Boot Devtools
 - Lombok
+- MapStruct
 
 ## Requisitos
 
