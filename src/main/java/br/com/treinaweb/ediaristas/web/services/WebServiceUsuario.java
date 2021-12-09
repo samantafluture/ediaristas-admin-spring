@@ -3,6 +3,7 @@ package br.com.treinaweb.ediaristas.web.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.FieldError;
 
@@ -25,6 +26,9 @@ public class WebServiceUsuario {
     @Autowired
     private WebUsuarioMapper mapper;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public List<Usuario> buscarTodos() {
         return repository.findAll();
     }
@@ -42,6 +46,10 @@ public class WebServiceUsuario {
         }
 
         var model = mapper.toModel(form);
+
+        var senhaHash = passwordEncoder.encode(model.getSenha());
+
+        model.setSenha(senhaHash);
         model.setTipoUsuario(TipoUsuario.ADMIN); // all users created by default are admin users
 
         validarCamposUnicos(model);
@@ -83,20 +91,10 @@ public class WebServiceUsuario {
     }
 
     private void validarCamposUnicos(Usuario usuario) {
-        // repository.findByEmail(usuario.getEmail()).ifPresent(usuarioEncontrado -> {
-        //     if (!usuarioEncontrado.equals(usuario)) {
-        //         var mensagem = "Já existe um usuário cadastrado com esse email";
-        //         var fieldError = new FieldError(usuario.getClass().getName(), "email", usuario.getEmail(), false, null,
-        //                 null,
-        //                 mensagem);
-
-        //         throw new UsuarioJaCadastradoException(mensagem, fieldError);
-        //     }
-        // });
-
         if (repository.isEmailJaCadastrado(usuario.getEmail(), usuario.getId())) {
             var mensagem = "Já existe um usuário cadastrado com esse email";
-            var fieldError = new FieldError(usuario.getClass().getName(), "email", usuario.getEmail(), false, null, null, mensagem);
+            var fieldError = new FieldError(usuario.getClass().getName(), "email", usuario.getEmail(), false, null,
+                    null, mensagem);
 
             throw new UsuarioJaCadastradoException(mensagem, fieldError);
         }
