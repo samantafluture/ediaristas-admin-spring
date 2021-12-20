@@ -13,6 +13,4 @@ public class AuthController {
         return "admin/auth/login";
     }
 
-
-
 }
